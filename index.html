@@ -9,6 +9,33 @@
   <body>
     <main id="main">
     </main>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form onsubmit="createRecipe();return false;">
+        Name: <input type="text" id="name"><br>
+        Description: <input type="text" id="description"><br>
+        Ingredient #1: <input type="text" name="ingredient"><br>
+        Ingredient #2: <input type="text" name="ingredient"><br>
+        Ingredient #3: <input type="text" name="ingredient"><br>
+        Ingredient #4: <input type="text" name="ingredient"><br>
+        Ingredient #5: <input type="text" name="ingredient"><br>
+        <input type="submit"
+      </form>
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div>
+        <p>{{description}}</p>
+        <ul>
+          {{#each ingredients}}
+          <li>{{displayIngredient}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </script>
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <h3>{{name}}</h3>
+      <p><a href="" id="recipe-link">Edit Recipe</a></p>
+      <div>{{> recipeDetailsPartial}}</div>
+    </script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->

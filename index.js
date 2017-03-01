@@ -14,10 +14,22 @@ function createRecipe() {
 //PUT UPDATERECIPE FUNCTION HERE
 
 function displayEditForm() {
-  debugger;
-  //create Handlebars template for edit recipe form
+  //receive values from form that has already been submitted
+  var name = document.getElementById('created-recipe-name').innerText;
+  var description = document.getElementById('created-recipe-description').innerText;
+  var rawIngredientsList = document.getElementsByName('ingredientsList');
+  var ingredients = [];
+  for (i = 0, l = rawIngredientsList.length; i<l; i++) {
+    ingredients.push(rawIngredientsList[i].innerText);
+  }
+  debugger; //check to see what ingredients looks like
+  //create new recipe variable using variables pulled from the previous recipe
+  var recipe = { name, description, ingredients, 'submitAction': 'createRecipe()' };
+
+  //create Handlebars template for edit recipe form and pass recipe as the context
   var recipeFormTemplate = Handlebars.compile(document.getElementById('recipe-form-template').innerHTML);
-  document.getElementsByTagName('main')[0].lastChild += recipeFormTemplate({ 'submitAction': 'updateRecipe()' });
+  document.getElementById('main').innerHTML = recipeFormTemplate(recipe);
+  debugger;
 }
 
 //create recipe context via form inputs

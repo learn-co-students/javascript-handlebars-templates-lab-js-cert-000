@@ -22,7 +22,7 @@
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       <p id="created-recipe-description">{{description}}</p>
       <ul>
-        {{#each filteredIngredients}}
+        {{#each ingredients}}
         {{ displayIngredient this}}
         {{/each}}
       </ul>
@@ -36,7 +36,7 @@
       Name: <input type="text" id="name" value="{{name}}"><br>
       Description: <input type="text" id="description" value="{{description}}"><br>
       <h4>Ingredients</h4>
-      {{#each filteredIngredients}}
+      {{#each ingredients}}
       <input name="ingredients" type="text" value="{{this}}"><br>
       {{else}}
       <input name="ingredients" type="text"><br>

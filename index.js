@@ -23,7 +23,7 @@ function displayEditForm() {
   var description = document.getElementById('created-recipe-description').innerText;
   var rawIngredientsList = document.getElementsByName('ingredientsList');
   var ingredients = [];
-  for (i = 0, l = rawIngredientsList.length; i<l; i++) {
+  for (let i = 0, l = rawIngredientsList.length; i<l; i++) {
     ingredients.push(rawIngredientsList[i].innerText);
   }
 
@@ -39,7 +39,7 @@ function displayEditForm() {
 function receiveRecipeValues() {
   var allIngredients = document.getElementsByName('ingredients');
   var ingredients = [];
-  for (i = 0, l = allIngredients.length; i<l; i++) {
+  for (let i = 0, l = allIngredients.length; i<l; i++) {
     if(allIngredients[i].value !== "") {
       ingredients.push(allIngredients[i].value);
     }

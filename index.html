@@ -15,9 +15,9 @@
     	   <div id="recipe_form" class="my2"  >
          	<form onsubmit="{{onsubmitAction}}">
     		<!-- hier muss man alle values noch mal in Aunführungszeichen setzen, sonst wird es falsch -->
-    		Name:  <input  name="RecipeName" type="textarea" id="name" value="{{recipeName}}"><br>
+    		Name:  <input  name="RecipeName" type="textarea" id="name" value="{{name}}"><br>
 
-       		Description: <input name="Description" type="textaera" id="recipeDescription" value="{{recipeDescription}}" ><br>
+       		Description: <input name="Description" type="textaera" id="recipeDescription" value="{{description}}" ><br>
 
     		Ingredient_1: <input name="ingredients" type="text" id="ingredient_1" value="{{ingredient_0}}"><br>
 
@@ -41,7 +41,7 @@
         	{{> recipeFormPartial }}
         	</script>
         		<!-- Ende der Start Form -->
-
+s
 
         	<!-- Ein separates Template für die Edit Form -->
         	<script id="edit-form" type="text/x-handlebars-template">
@@ -52,7 +52,7 @@
         <!-- recipe template -->
            	<script id="recipe-template" type="text/x-handlebars-template">
         	<div>
-        	<p id = "recipeName">{{recipeName}}</p>
+        	<p id = "recipeName">{{name}}</p>
         	{{> recipeDetailsPartial }}
         	 <a href="#" onclick="displayEditForm();">Edit Recipe</a>
         	</div>
@@ -63,11 +63,11 @@
           	<!-- recipe details partial template -->
           	<script id="recipe-details-partial" type="text/x-handlebars-template">
           	<div>
-          	 <p id = descriptionOfRecipe>{{recipeDescription}}</p>
+          	 <p id = descriptionOfRecipe>{{description}}</p>
 
           	<ul>
                 {{#each ingredients}}
-                {{displayIngredient}}
+                {{displayIngredient this}}
                 {{/each}}
               </ul>
           	</div>

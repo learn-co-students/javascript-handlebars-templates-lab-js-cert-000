@@ -7,7 +7,7 @@ function init() {
 
     Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
 
-  
+
 
 
   // in diesem selbsterzeugten Helper ist es wichtig "this" zu verwenden, weil der Helper nur das jeweilige Element kennt
@@ -44,10 +44,10 @@ function createRecipe(){
    function displayEditForm(){
 	var recipe = {
 	onsubmitAction:"updateRecipe();return false",
-	recipeDescription: document.getElementById("descriptionOfRecipe").innerHTML,
-	recipeName: document.getElementById("recipeName").innerHTML
+	description: document.getElementById("descriptionOfRecipe").innerHTML,
+	name: document.getElementById("recipeName").innerHTML
 	}
-	for (i=0; i<document.querySelectorAll('ul li').length; i++){
+	for ( var i=0; i<document.querySelectorAll('ul li').length; i++){
 //hier kann man eine Zahl einfach zu einem String addieren, weil js, das so interpretiert
 var propertyName = "ingredient_"+i;
 //hier darf die Eigenschaft als String in die eckigen Klammern geschrieben werden,
@@ -55,7 +55,8 @@ var propertyName = "ingredient_"+i;
 recipe[propertyName] = document.querySelectorAll('ul li')[i].innerHTML;
 }
 
-	var recipeEditFormTemplateFn = Handlebars.compile(document.getElementById("edit-form").innerHTML);
+
+	var recipeEditFormTemplateFn = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
 	var recipeEditFormTemplate = recipeEditFormTemplateFn(recipe)
 	document.getElementsByTagName("main")[0].innerHTML = recipeEditFormTemplate;
 
@@ -66,10 +67,11 @@ recipe[propertyName] = document.querySelectorAll('ul li')[i].innerHTML;
 
 
 
+
  function updateRecipe() {
 	var recipe = {
-	recipeName: document.getElementById("name").value,
-	recipeDescription: document.getElementById("recipeDescription").value,
+	name: document.getElementById("name").value,
+	description: document.getElementById("recipeDescription").value,
 	ingredients: document.getElementsByName("ingredients")
 	}
   var recipeTemplateFn = Handlebars.compile(document.getElementById("recipe-template").innerHTML);

@@ -1,13 +1,13 @@
 function init() {
   //dieses Object wird beim Erzeugen der Form an das template übergeben
-
-  	var recipeFormTemplatefn = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+  Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form-template").innerHTML)
+  	var recipeFormTemplatefn = Handlebars.compile(document.getElementById("recipe-form").innerHTML);
   	var recipeFormTemplate = recipeFormTemplatefn({onsubmitAction:"createRecipe();return false;"});
   	document.getElementById("main").innerHTML += recipeFormTemplate;
 
     Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
 
-    Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form-template").innerHTML)
+  
 
 
   // in diesem selbsterzeugten Helper ist es wichtig "this" zu verwenden, weil der Helper nur das jeweilige Element kennt
@@ -55,7 +55,7 @@ var propertyName = "ingredient_"+i;
 recipe[propertyName] = document.querySelectorAll('ul li')[i].innerHTML;
 }
 
-	var recipeEditFormTemplateFn = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+	var recipeEditFormTemplateFn = Handlebars.compile(document.getElementById("edit-form").innerHTML);
 	var recipeEditFormTemplate = recipeEditFormTemplateFn(recipe)
 	document.getElementsByTagName("main")[0].innerHTML = recipeEditFormTemplate;
 

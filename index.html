@@ -9,6 +9,77 @@
   <body>
     <main id="main">
     </main>
+
+    <!-- recipe form template -->
+       	<script id="recipe-form-template" type="text/x-handlebars-template">
+    	   <div id="recipe_form" class="my2"  >
+         	<form onsubmit="{{onsubmitAction}}">
+    		<!-- hier muss man alle values noch mal in Aunführungszeichen setzen, sonst wird es falsch -->
+    		Name:  <input  name="RecipeName" type="textarea" id="name" value="{{name}}"><br>
+
+       		Description: <input name="Description" type="textaera" id="recipeDescription" value="{{description}}" ><br>
+
+    		Ingredient_1: <input name="ingredients" type="text" id="ingredient_1" value="{{ingredient_0}}"><br>
+
+    		Ingredient_2: <input name="ingredients" type="text" id="ingredient_2" value="{{ingredient_1}}"><br>
+
+    		Ingredient_3: <input name="ingredients" type="text" id="ingredient_3" value="{{ingredient_2}}"><br>
+
+    		Ingredient_4: <input name="ingredients" type="text" id="ingredient_4" value="{{ingredient_3}}"><br>
+
+    		Ingredient_5: <input name="ingredients" type="text" id="ingredient_5" value="{{ingredient_4}}"><br>
+
+       		<input type="submit">
+    		</form>
+           </div>
+       	</script>
+       	<!-- end recipe form template -->
+
+
+        <!-- Ein separates Template für die Start Form -->
+        	<script id="recipe-form" type="text/x-handlebars-template">
+        	{{> recipeFormPartial }}
+        	</script>
+        		<!-- Ende der Start Form -->
+s
+
+        	<!-- Ein separates Template für die Edit Form -->
+        	<script id="edit-form" type="text/x-handlebars-template">
+        	{{> recipeFormPartial }}
+        	</script>
+        		<!-- Ende der Edit Form -->
+
+        <!-- recipe template -->
+           	<script id="recipe-template" type="text/x-handlebars-template">
+        	<div>
+        	<p id = "recipeName">{{name}}</p>
+        	{{> recipeDetailsPartial }}
+        	 <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+        	</div>
+        	</script>
+        	<!-- end recipe template -->
+
+
+          	<!-- recipe details partial template -->
+          	<script id="recipe-details-partial" type="text/x-handlebars-template">
+          	<div>
+          	 <p id = descriptionOfRecipe>{{description}}</p>
+
+          	<ul>
+                {{#each ingredients}}
+                {{displayIngredient this}}
+                {{/each}}
+              </ul>
+          	</div>
+          	</script>
+
+
+          	<!-- end recipe details partial template -->
+
+
+
+
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->

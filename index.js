@@ -77,4 +77,3 @@ recipe[propertyName] = document.querySelectorAll('ul li')[i].innerHTML;
   document.getElementsByTagName("main")[0].innerHTML = recipeTemplate;
 
    }
-   
